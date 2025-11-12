@@ -70,7 +70,7 @@ const AddVehicle = ({ onAdd }) => {
           onSubmit={handleSubmit}
           className="bg-white p-5 rounded-lg shadow-sm border border-gray-200 space-y-4"
         >
-          {/* Vehicle & Owner */}
+       
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label htmlFor="vehicleName" className="text-gray-500 text-[16px]">
