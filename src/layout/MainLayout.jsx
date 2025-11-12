@@ -14,7 +14,7 @@ const MainLayout = () => {
 
       <main className="flex-1 w-full px-4 sm:px-6 lg:px-8 mx-auto max-w-[1200px]">
     
-         {/* {homePage && <Hero />} */}
+         {homePage && <Hero />}
 
      
         <Outlet />
