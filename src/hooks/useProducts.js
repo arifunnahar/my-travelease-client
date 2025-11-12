@@ -1,5 +1,7 @@
+
 import { useState, useEffect } from "react";
 import axios from "axios";
+
 
 const useProducts = () => {
   const [products, setProducts] = useState([]);
@@ -10,11 +12,10 @@ const useProducts = () => {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("http://localhost:3000/products");
-        setProducts(res.data);
+        const data = await axios.get("http://localhost:3000/products");
+        setProducts(data.data);
       } catch (err) {
-      
-        setError(err.response?.data?.message || err.message || "Failed to load products");
+        setError(err);
       } finally {
         setLoading(false);
       }
