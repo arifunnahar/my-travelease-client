@@ -26,7 +26,7 @@ const Hero = () => {
               alt="Hero Slide 1"
               className="w-full h-full object-cover rounded-xl brightness-75"
             />
-            {/* Text Overlay */}
+     
             <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center text-white px-4">
               <h2 className="text-5xl font-bold mb-3 drop-shadow-lg">
                 Fresh Indoor Plants
