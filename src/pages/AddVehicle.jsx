@@ -102,7 +102,7 @@ const AddVehicle = ({ onAdd }) => {
             </div>
           </div>
 
-          {/* Category & Price */}
+          {/* Category and Price */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label htmlFor="category" className="text-gray-500 text-[16px]">
@@ -187,7 +187,7 @@ const AddVehicle = ({ onAdd }) => {
             />
           </div>
 
-          {/* Description */}
+        
           <div>
             <label htmlFor="description" className="text-gray-500 text-[16px]">
               Description
