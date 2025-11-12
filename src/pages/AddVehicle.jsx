@@ -219,7 +219,7 @@ const AddVehicle = ({ onAdd }) => {
             />
           </div>
 
-          {/* Submit Button */}
+          {/* Button */}
           <button
             type="submit"
             className="w-full py-2 text-sm bg-blue-600 hover:bg-blue-700 text-white font-medium rounded"
