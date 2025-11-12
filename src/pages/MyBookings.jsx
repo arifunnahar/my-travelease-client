@@ -1,0 +1,120 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+const MyBookings = () => {
+  const [bookings, setBookings] = useState([]);
+
+  useEffect(() => {
+    const userEmail = "user@example.com"; 
+    axios
+      .get(`http://localhost:3000/bookings?userEmail=${userEmail}`)
+      .then((res) => setBookings(res.data))
+      .catch((err) => console.error(err));
+  }, []);
+
+  const handleRemove = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3000/bookings/${id}`);
+      setBookings((prev) => prev.filter((b) => b._id !== id));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+  };
+
+  return (
+    <div className="p-6 max-w-7xl mx-auto">
+      <h2 className="text-2xl font-bold text-gray-800 mb-4">
+        My Bookings: <span>{bookings.length}</span>
+      </h2>
+
+      {bookings.length === 0 ? (
+        <p className="text-gray-500">No bookings yet.</p>
+      ) : (
+        <div className="bg-blue-200  rounded-lg shadow overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="min-w-full ">
+            
+<thead className=" bg-blue-200 ">
+  <tr>
+    <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase">Sl. No</th>
+    <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase">Product</th>
+    <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase">Price</th>
+    <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase">Booking Date</th>
+    <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase">Seller Info</th>
+    <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase">Status</th>
+    <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase">Actions</th>
+  </tr>
+</thead>
+
+<tbody className="bg-blue-100  ">
+  {bookings.map((b, index) => (
+    <tr key={b._id} className="bg-blue-50">
+      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
+
+      {/* Product image and name */}
+      <td className="px-6 py-4 whitespace-nowrap flex items-center gap-3">
+        <img
+          src={b.coverImage}
+          alt={b.vehicleName}
+          className="w-12 h-12 object-cover rounded-md border"
+        />
+        <span className="text-gray-800 font-medium">{b.vehicleName}</span>
+      </td>
+
+      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${b.pricePerDay}</td>
+
+      {/* Booking Date */}
+      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+        {b.createdAt ? formatDate(b.createdAt) : "N/A"}
+      </td>
+
+      {/* Seller Info (Name + Email) */}
+      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+        <div>{b.owner || "N/A"}</div>
+        <div className="text-gray-500 text-xs">{b.ownerEmail || "N/A"}</div>
+      </td>
+
+      {/* Status */}
+      <td className="px-6 py-4 whitespace-nowrap">
+        <span
+          className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+            b.status === "Pending"
+              ? "bg-yellow-100 text-yellow-800"
+              : "bg-green-100 text-green-800"
+          }`}
+        >
+          {b.status}
+        </span>
+      </td>
+
+      <td className="px-6 py-4 whitespace-nowrap text-sm">
+        <button
+          onClick={() => handleRemove(b._id)}
+          className="bg-red-100 text-red-600 px-3 py-1 rounded text-xs hover:bg-red-200 transition"
+        >
+          Remove Booking
+        </button>
+      </td>
+    </tr>
+  ))}
+</tbody>
+
+             
+            </table>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default MyBookings;
