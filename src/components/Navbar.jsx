@@ -128,7 +128,7 @@ const Navbar = () => {
                         </Link>
                       </li>
                     </ul>
-                    <h2 className="text-lg font-semibold mb-2">{user.displayName}</h2>
+                    <h2 className="text-lg font-semibold hover:text-purple-600  mb-2">{user.displayName}</h2>
                     
                   </div>
                   <button
@@ -233,7 +233,7 @@ const Navbar = () => {
               >
                Profile
               </Link>
-              <h2 className="font-semibold mb-1">{user.displayName}</h2>
+              <h2 className="font-semibold hover:text-purple-600 mb-1">{user.displayName}</h2>
               
               <button
                 onClick={handleSignOut}
