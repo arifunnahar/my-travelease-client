@@ -5,8 +5,8 @@ import Footer from '../components/Footer';
 import Hero from '../components/Hero';
 
 const MainLayout = () => {
-  // const location = useLocation();
-  // const homePage = location.pathname === '/';
+  const location = useLocation();
+  const homePage = location.pathname === '/';
 
   return (
     <div className="flex flex-col min-h-screen bg-pink-50">
