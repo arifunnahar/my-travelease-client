@@ -26,7 +26,7 @@ const FooterBrand = () => (
 
 const FooterServices = () => (
   <div>
-    <h4 className="text-lg font-semibold mb-3 text-blue-900">Our Services</h4>
+    <h4 className="text-lg font-semibold mb-2 text-blue-900">Our Services</h4>
     <ul className="space-y-2 text-sm">
       <li>
         <a href="" className="hover:text-blue-600 transition">Buy New & Used Cars</a>
@@ -34,9 +34,7 @@ const FooterServices = () => (
       <li>
         <a href="" className="hover:text-blue-600 transition">Car Valuation & Inspection</a>
       </li>
-      <li>
-        <a href="" className="hover:text-blue-600 transition">Car Loan Assistance</a>
-      </li>
+    
       <li>
         <a href="" className="hover:text-blue-600 transition">24/7 Customer Support</a>
       </li>
@@ -49,7 +47,16 @@ const FooterServices = () => (
 
 const FooterSocial = () => (
   <div>
-    <h4 className="text-lg font-semibold mb-3 text-blue-900">Follow Us</h4>
+    <div className="mt-2">
+      <h4 className="text-lg font-semibold mb-2 text-blue-900">Quick Links</h4>
+      <ul className="space-y-1 text-sm flex gap-4">
+        <li><a href="" className="hover:text-blue-600 transition">About Us</a></li>
+        <li><a href="" className="hover:text-blue-600 transition">Contact</a></li>
+       
+        <li><a href="" className="hover:text-blue-600 transition">Terms & Conditions</a></li>
+      </ul>
+    </div>
+    <h4 className="text-lg font-semibold mt-3 mb-2 text-blue-900">Follow Us</h4>
     <div className="flex gap-4">
       {[FaXTwitter, FaInstagram, FaPinterest, FaFacebook].map((Icon, index) => (
         <a
@@ -61,15 +68,7 @@ const FooterSocial = () => (
         </a>
       ))}
     </div>
-    <div className="mt-6">
-      <h4 className="text-lg font-semibold mb-2 text-blue-900">Quick Links</h4>
-      <ul className="space-y-1 text-sm">
-        <li><a href="" className="hover:text-blue-600 transition">About Us</a></li>
-        <li><a href="" className="hover:text-blue-600 transition">Contact</a></li>
-        <li><a href="" className="hover:text-blue-600 transition">Privacy Policy</a></li>
-        <li><a href="" className="hover:text-blue-600 transition">Terms & Conditions</a></li>
-      </ul>
-    </div>
+    
   </div>
 );
 
