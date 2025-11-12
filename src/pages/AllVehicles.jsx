@@ -8,11 +8,7 @@ const AllVehicles = () => {
    
     
 
-
-    
-    
-    
-    return (
+ return (
       <div>
             <div className="py-5 flex justify-between">
                 <h1 className="text-2xl  font-bold ">All Vehicles</h1>
