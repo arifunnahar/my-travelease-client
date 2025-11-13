@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  //f Signup
+  // Signup
   const createUserWithEmailAndPasswordFunc = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };

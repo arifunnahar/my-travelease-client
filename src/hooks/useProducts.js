@@ -1,7 +1,5 @@
-
 import { useState, useEffect } from "react";
 import axios from "axios";
-
 
 const useProducts = () => {
   const [products, setProducts] = useState([]);
@@ -12,7 +10,9 @@ const useProducts = () => {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const data = await axios.get("http://localhost:3000/products");
+        const data = await axios.get(
+          "https://my-travel-ease-server.vercel.app/products"
+        );
         setProducts(data.data);
       } catch (err) {
         setError(err);
@@ -24,7 +24,7 @@ const useProducts = () => {
     fetchProducts();
   }, []);
 
-  return { products, loading, error };
+  return { products, loading, error, setProducts };
 };
 
 export default useProducts;

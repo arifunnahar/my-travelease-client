@@ -36,7 +36,7 @@ const Hero = () => {
               </p>
               <Link
                 to="/allVehicles"
-                className="bg-blue-100 hover:bg-blue-200 text-gray-700 px-6 py-3 rounded-full font-semibold shadow-md transition-all duration-300 hover:scale-105"
+                className="bg-blue-100 hover:bg-blue-300 text-gray-800 px-6 py-3 rounded-full font-semibold shadow-md transition-all duration-300 hover:scale-105"
               >
                All Vehicles
               </Link>
@@ -61,7 +61,7 @@ const Hero = () => {
               </p>
               <Link
                 to="/allVehicles"
-                className="bg-blue-100 hover:bg-blue-200 text-gray-700 px-6 py-3 rounded-full font-semibold shadow-md transition-all duration-300 hover:scale-105"
+                className="bg-blue-100 hover:bg-blue-300 text-gray-800 px-6 py-3 rounded-full font-semibold shadow-md transition-all duration-300 hover:scale-105"
               >
               All Vehicles
               </Link>
@@ -86,7 +86,7 @@ const Hero = () => {
               </p>
               <Link
                 to="/allVehicles"
-                className="bg-blue-100 hover:bg-blue-200 text-gray-700 px-6 py-3 rounded-full font-semibold shadow-md transition-all duration-300 hover:scale-105"
+                className="bg-blue-100 hover:bg-blue-300 text-gray-800 px-6 py-3 rounded-full font-semibold shadow-md transition-all duration-300 hover:scale-105"
               >
               All Vehicles 
               </Link>

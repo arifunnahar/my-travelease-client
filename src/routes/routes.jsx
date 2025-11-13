@@ -6,58 +6,53 @@ import AddVehicle from "../pages/AddVehicle";
 import MyVehicles from "../pages/MyVehicles";
 import MyBookings from "../pages/MyBookings";
 import ProductDetails from "../pages/ProductDetails";
+import UpdateForm from "../pages/UpdateForm";
 
 import Signup from "../pages/Signup";
-
 import Signin from "../pages/Signin";
 import PrivateRoute from "../privateRoute/PrivateRoute";
-
-
 
 export const router = createBrowserRouter([
   {
     path: "/",
-        element: <MainLayout />,
+    element: <MainLayout />,
     children: [
       {
         index: true,
-        element: <Home />,
-       
-    
+        element: <Home />
       },
       {
         path: "/allVehicles",
-        element:<AllVehicles/>,
+        element: <AllVehicles />
       },
       {
         path: "/addVehicles",
-        element: <PrivateRoute><AddVehicle /></PrivateRoute>,
-        
+        element: <PrivateRoute><AddVehicle /></PrivateRoute>
       },
       {
         path: "/myVehicles",
-        element:<PrivateRoute><MyVehicles/> </PrivateRoute>,
+        element: <PrivateRoute><MyVehicles /></PrivateRoute>
       },
       {
         path: "/myBooking",
-        element:<PrivateRoute><MyBookings/></PrivateRoute>,
+        element: <PrivateRoute><MyBookings /></PrivateRoute>
       },
       {
         path: "/product/:id",
-        
-        element: <PrivateRoute><ProductDetails/></PrivateRoute>
+        element: <PrivateRoute><ProductDetails /></PrivateRoute>
+      },
+      {
+        path: "/editProduct/:id",
+        element: <PrivateRoute><UpdateForm /></PrivateRoute>
       },
       {
         path: "/signin",
-        element:<Signin/>
+        element: <Signin />
       },
       {
-        path: "signup",
-        element: <Signup/>
-      },
-      
-      
-
+        path: "/signup",
+        element: <Signup />
+      }
     ]
-  },
+  }
 ]);

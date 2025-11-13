@@ -1,87 +1,66 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import React, { useContext } from "react";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { AuthContext } from "../context/AuthContext";
+import LoadingSpinner from "../pages/LoadingSpinner";
+import ErrorPage from "../pages/ErrorPage";
+import { useState } from "react";
 
-const AddVehicle = ({ onAdd }) => {
-  const initialState = {
-    vehicleName: '',
-    ownerName: '',
-    category: '',
-    pricePerDay: '',
-    location: '',
-    availability: 'Available',
-    coverImage: '',
-    description: '',
-    userEmail: '',
-  };
+const AddVehicle = () => {
+  const { user } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
-  const [formData, setFormData] = useState(initialState);
-
-  const handleChange = e => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Basic validation
-    if (
-      !formData.vehicleName ||
-      !formData.ownerName ||
-      !formData.category ||
-      !formData.pricePerDay ||
-      !formData.location ||
-      !formData.coverImage ||
-      !formData.description ||
-      !formData.userEmail
-    ) {
-      toast.warning('Please fill out all fields!');
-      return;
-    }
+    const form = e.target;
+    const formData = new FormData(form);
+    const productData = Object.fromEntries(formData.entries());
 
     try {
-      const res = await axios.post('http://localhost:3000/products', formData);
+      await axios.post(
+        "https://my-travel-ease-server.vercel.app/products",
+        productData
+      );
 
-      if (res.status === 201) {
-        const newVehicle = res.data; 
+      toast.success("Vehicle added successfully!");
 
-        toast.success('Vehicle added successfully!');
-
-        // Reset form
-        setFormData(initialState);
-
-        // Notify parent (for updating list instantly)
-        if (onAdd) {
-          onAdd(newVehicle);
-        }
-      }
+      // Auto reset form after success
+      form.reset();
     } catch (err) {
-      toast.error('Failed to add vehicle!');
-      console.error('Error adding vehicle:', err);
+      console.log(err);
+      toast.error("Failed to add vehicle. Try again.");
     }
   };
+
+  if (loading) return <LoadingSpinner />;
+  if (error) return <ErrorPage />;
 
   return (
     <div className="min-h-screen bg-pink-50 p-4 flex items-center justify-center">
+      <ToastContainer />
       <div className="w-full max-w-lg">
-        <h1 className="text-2xl font-bold text-center text-gray-800 mb-4">Add New Vehicle</h1>
+        <h1 className="text-2xl font-bold text-center text-gray-800 mb-4">
+          Add New Vehicle
+        </h1>
         <form
           onSubmit={handleSubmit}
           className="bg-white p-5 rounded-lg shadow-sm border border-gray-200 space-y-4"
         >
-       
+          {/* Vehicle Name and Owner */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
-              <label htmlFor="vehicleName" className="text-gray-500 text-[16px]">
+              <label
+                htmlFor="vehicleName"
+                className="text-gray-500 text-[16px]"
+              >
                 Vehicle Name
               </label>
               <input
                 id="vehicleName"
                 type="text"
                 name="vehicleName"
-                value={formData.vehicleName}
-                onChange={handleChange}
                 placeholder="Vehicle Name"
                 className="text-sm px-3 py-2 border border-gray-300 rounded w-full"
               />
@@ -94,15 +73,15 @@ const AddVehicle = ({ onAdd }) => {
                 id="ownerName"
                 type="text"
                 name="ownerName"
-                value={formData.ownerName}
-                onChange={handleChange}
+                defaultValue={user.displayName}
+                readOnly
                 placeholder="Owner Name"
                 className="text-sm px-3 py-2 border border-gray-300 rounded w-full"
               />
             </div>
           </div>
 
-          {/* Category and Price */}
+          {/* Category Price */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label htmlFor="category" className="text-gray-500 text-[16px]">
@@ -111,8 +90,6 @@ const AddVehicle = ({ onAdd }) => {
               <select
                 id="category"
                 name="category"
-                value={formData.category}
-                onChange={handleChange}
                 className="text-sm px-3 py-2 border border-gray-300 rounded w-full"
               >
                 <option value="">Select Category</option>
@@ -120,18 +97,20 @@ const AddVehicle = ({ onAdd }) => {
                 <option value="Sedan">Sedan</option>
                 <option value="Truck">Truck</option>
                 <option value="Van">Van</option>
+                <option value="Van">Electric</option>
               </select>
             </div>
             <div>
-              <label htmlFor="pricePerDay" className="text-gray-500 text-[16px]">
+              <label
+                htmlFor="pricePerDay"
+                className="text-gray-500 text-[16px]"
+              >
                 Price per Day ($)
               </label>
               <input
                 id="pricePerDay"
                 type="number"
                 name="pricePerDay"
-                value={formData.pricePerDay}
-                onChange={handleChange}
                 placeholder="Price per Day"
                 className="text-sm px-3 py-2 border border-gray-300 rounded w-full"
               />
@@ -148,25 +127,24 @@ const AddVehicle = ({ onAdd }) => {
                 id="location"
                 type="text"
                 name="location"
-                value={formData.location}
-                onChange={handleChange}
                 placeholder="Location"
                 className="text-sm px-3 py-2 border border-gray-300 rounded w-full"
               />
             </div>
             <div>
-              <label htmlFor="availability" className="text-gray-500 text-[16px]">
+              <label
+                htmlFor="availability"
+                className="text-gray-500 text-[16px]"
+              >
                 Availability
               </label>
               <select
                 id="availability"
                 name="availability"
-                value={formData.availability}
-                onChange={handleChange}
                 className="text-sm px-3 py-2 border border-gray-300 rounded w-full"
               >
                 <option value="Available">Available</option>
-                <option value="Unavailable">Unavailable</option>
+                <option value="Unavailable">Booked</option>
               </select>
             </div>
           </div>
@@ -180,14 +158,12 @@ const AddVehicle = ({ onAdd }) => {
               id="coverImage"
               type="url"
               name="coverImage"
-              value={formData.coverImage}
-              onChange={handleChange}
               placeholder="Cover Image URL"
               className="w-full text-sm px-3 py-2 border border-gray-300 rounded"
             />
           </div>
 
-        
+          {/* Description */}
           <div>
             <label htmlFor="description" className="text-gray-500 text-[16px]">
               Description
@@ -195,8 +171,6 @@ const AddVehicle = ({ onAdd }) => {
             <textarea
               id="description"
               name="description"
-              value={formData.description}
-              onChange={handleChange}
               rows={2}
               placeholder="Vehicle description..."
               className="w-full text-sm px-3 py-2 border border-gray-300 rounded resize-none"
@@ -212,14 +186,14 @@ const AddVehicle = ({ onAdd }) => {
               id="userEmail"
               type="email"
               name="userEmail"
-              value={formData.userEmail}
-              onChange={handleChange}
+              defaultValue={user.email}
+              readOnly
               placeholder="User Email"
               className="w-full text-sm px-3 py-2 border border-gray-300 rounded"
             />
           </div>
 
-          {/* Button */}
+          {/* Submit Button */}
           <button
             type="submit"
             className="w-full py-2 text-sm bg-blue-600 hover:bg-blue-700 text-white font-medium rounded"

@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
 import useProducts from '../hooks/useProducts';
 import ProductCard from './ProductCard';
+import LoadingSpinner from '../pages/LoadingSpinner';
+import ErrorPage from '../pages/ErrorPage';
+
 
 const AllVehicles = () => {
     const { products } = useProducts();
+     const [loading, setLoading] = useState(false);
+        const [error, setError] = useState(false);
+    
   
    
     
-
+if (loading) return <LoadingSpinner/>
+    if (error) return <ErrorPage />
+    
  return (
       <div>
             <div className="py-5 flex justify-between">
