@@ -10,6 +10,8 @@ const Navbar = () => {
 
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
+  
+
   useEffect(() => {
     const html = document.querySelector("html");
     html.setAttribute("data-theme", theme);
@@ -20,6 +22,10 @@ const Navbar = () => {
     setTheme(checked ? "dark" : "light");
   };
 
+
+
+
+
   const handleSignOut = () => {
     signOutUserFunc()
       .then(() => {
@@ -29,13 +35,26 @@ const Navbar = () => {
       .catch((e) => console.log(e.message));
   };
 
-  const navLinks = [
-    { to: "/", label: "Home" },
-    { to: "/allVehicles", label: "All Vehicles" },
-    { to: "/addVehicles", label: "Add Vehicles" },
-    { to: "/myVehicles", label: "My Vehicles" },
-    { to: "/myBooking", label: "My Bookings" },
-  ];
+
+
+
+  
+
+const navLinks = [
+  { to: "/", label: "Home" },
+  { to: "/allVehicles", label: "All Vehicles" },
+  ...(user
+    ? [
+        { to: "/addVehicles", label: "Add Vehicles" },
+        { to: "/myVehicles", label: "My Vehicles" },
+        { to: "/myBooking", label: "My Bookings" },
+      ]
+    : []),
+];
+
+
+
+  
 
   return (
     <nav className="bg-blue-100 dark:text-blue-600 shadow-sm p-4 relative">
@@ -87,7 +106,7 @@ const Navbar = () => {
               >
                 Signup
               </Link>
-            </>
+            </>  
           )}
 
           {user && (
@@ -121,14 +140,14 @@ const Navbar = () => {
                           className="hover:text-purple-600 font-bold hover:underline"
                           onClick={() => setShowProfile(false)}
                         >
-                          Profile
+                         
                         </Link>
                       </li>
                     </ul>
                   </div>
                   <button
                     onClick={handleSignOut}
-                    className="btn bg-blue-500 hover:bg-blue-600 text-white w-full"
+                    className="btn bg-blue-400 hover:bg-blue-500 text-white w-full rounded-full"
                   >
                     Logout
                   </button>
@@ -167,14 +186,14 @@ const Navbar = () => {
             <>
               <Link
                 to="/signin"
-                className="btn btn-outline w-full"
+                className="btn btn-outline w-full "
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Login
               </Link>
               <Link
                 to="/signup"
-                className="btn btn-primary w-full"
+                className="btn btn-primary w-full "
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Signup
@@ -196,7 +215,7 @@ const Navbar = () => {
                 onClick={() => setMobileMenuOpen(false)}
                 className="hover:text-purple-600 font-bold hover:underline mb-2 mt-2"
               >
-                Profile
+               
               </Link>
               <button
                 onClick={handleSignOut}

@@ -84,102 +84,152 @@ const UpdateForm = () => {
   }
 
   return (
-    <div className="max-w-3xl mx-auto mt-10 bg-white p-6 rounded-lg shadow-lg">
+    <div className="max-w-2xl mx-auto mt-10 bg-gray-100 p-6 rounded-lg shadow-lg mb-5 border-2 border-gray-200">
       <h2 className="text-3xl font-bold text-gray-700 mb-8 text-center">
         Update Form
       </h2>
       <form onSubmit={handleSubmit} className="space-y-6">
+        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <input
-            type="text"
-            name="vehicleName"
-            value={formData.vehicleName}
-            onChange={handleChange}
-            placeholder="Vehicle Name"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            required
-          />
-          <input
-            type="text"
-            name="category"
-            value={formData.category}
-            onChange={handleChange}
-            placeholder="Category"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            required
-          />
+          <div>
+            <label className="block mb-2 font-medium text-gray-700">
+              Vehicle Name
+            </label>
+            <input
+              type="text"
+              name="vehicleName"
+              value={formData.vehicleName}
+              onChange={handleChange}
+              placeholder="Enter Vehicle Name"
+              className="w-full px-4 py-3 border dark:text-gray-700 border-gray-300 rounded-lg "
+              required
+            />
+          </div>
+          <div>
+            <label className="block mb-2 font-medium text-gray-700">
+              Category
+            </label>
+            <input
+              type="text"
+              name="category"
+              value={formData.category}
+              onChange={handleChange}
+              placeholder="Enter Category"
+              className="w-full px-4 py-3 border dark:text-gray-700 border-gray-300 rounded-lg "
+              required
+            />
+          </div>
         </div>
 
+        {/* Price and Location------------------ */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <input
-            type="text"
-            name="pricePerDay"
-            value={formData.pricePerDay}
-            onChange={handleChange}
-            placeholder="Price per Day"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            required
-          />
-          <input
-            type="text"
-            name="location"
-            value={formData.location}
-            onChange={handleChange}
-            placeholder="Location"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            required
-          />
+          <div>
+            <label className="block mb-2 font-medium text-gray-700">
+              Price per Day
+            </label>
+            <input
+              type="text"
+              name="pricePerDay"
+              value={formData.pricePerDay}
+              onChange={handleChange}
+              placeholder="Enter Price per Day"
+              className="w-full px-4 py-3 border dark:text-gray-700 border-gray-300 rounded-lg"
+              required
+            />
+          </div>
+          <div>
+            <label className="block mb-2 font-medium text-gray-700">
+              Location
+            </label>
+            <input
+              type="text"
+              name="location"
+              value={formData.location}
+              onChange={handleChange}
+              placeholder="Enter Location"
+              className="w-full px-4 py-3 border dark:text-gray-700 border-gray-300 rounded-lg "
+              required
+            />
+          </div>
         </div>
 
+        {/* Availability andImage-------------- */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <input
-            type="text"
-            name="availability"
-            value={formData.availability}
-            onChange={handleChange}
-            placeholder="Availability"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            required
-          />
-          <input
-            type="text"
-            name="coverImage"
-            value={formData.coverImage}
-            onChange={handleChange}
-            placeholder="Image URL"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          />
+          <div>
+            <label className="block mb-2 font-medium text-gray-700">
+              Availability
+            </label>
+            <input
+              type="text"
+              name="availability"
+              value={formData.availability}
+              onChange={handleChange}
+              placeholder="Enter Availability"
+              className="w-full px-4 py-3 border dark:text-gray-700 border-gray-300 rounded-lg "
+              required
+            />
+          </div>
+          <div>
+            <label className="block mb-2 font-medium text-gray-700">
+              Image URL
+            </label>
+            <input
+              type="text"
+              name="coverImage"
+              value={formData.coverImage}
+              onChange={handleChange}
+              placeholder="Enter Image URL"
+              className="w-full px-4 py-3 dark:text-gray-700 border border-gray-300 rounded-lg focus:ring-2 "
+            />
+          </div>
         </div>
 
+        {/* Owner Name and Email--------------- */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <input
-            type="text"
-            name="ownerName"
-            value={formData.ownerName}
-            onChange={handleChange}
-            placeholder="Owner Name"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            required
-          />
-          <input
-            type="email"
-            name="userEmail"
-            value={formData.userEmail}
-            onChange={handleChange}
-            placeholder="Owner Email"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            required
-          />
+          <div>
+            <label className="block mb-2 font-medium text-gray-700">
+              Owner Name
+            </label>
+            <input
+              type="text"
+              name="ownerName"
+              value={formData.ownerName}
+              onChange={handleChange}
+              placeholder="Enter Owner Name"
+              className="w-full px-4 py-3 border dark:text-gray-700 border-gray-300 rounded-lg focus:ring-2"
+              required
+            />
+          </div>
+          <div>
+            <label className="block mb-2 font-medium text-gray-700">
+              Owner Email
+            </label>
+            <input
+              type="email"
+              name="userEmail"
+              value={formData.userEmail}
+              onChange={handleChange}
+              placeholder="Enter Owner Email"
+              className="w-full px-4 py-3 border dark:text-gray-700 border-gray-300 rounded-lg"
+              required
+            />
+          </div>
         </div>
 
-        <textarea
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-          placeholder="Description"
-          rows="4"
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-        />
+      
+        <div>
+          <label className="block mb-2 font-medium text-gray-700">
+            Description
+          </label>
+          <textarea
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+            placeholder="Enter Description"
+            rows="4"
+            className="w-full px-4 py-3 border dark:text-gray-700 border-gray-300 rounded-lg "
+          />
+        </div>
 
         <button
           type="submit"

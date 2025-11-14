@@ -24,7 +24,7 @@ const Signup = () => {
     const email = e.target.email?.value;
     const password = e.target.password?.value;
 
-    // password validation
+    // password validation------------
     const regExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{8,}$/;
     if (!regExp.test(password)) {
       toast.error(
@@ -46,7 +46,7 @@ const Signup = () => {
             photoURL,
           });
 
-          // Send verification 
+          
       
 
           toast.success("Signup successful! Welcome to TravelEase");

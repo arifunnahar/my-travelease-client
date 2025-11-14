@@ -44,7 +44,7 @@ const StaticSections = () => {
 
       {/* Featured Owner */}
       <motion.section
-        className="bg-blue-100 dark:text-blue-700 rounded-2xl shadow-lg p-6 hover:shadow-xl transition"
+        className="bg-blue-100 dark:text-blue-300 rounded-2xl shadow-lg p-6 hover:shadow-xl transition"
         variants={sectionVariants}
         initial="hidden"
         whileInView="visible"
@@ -61,7 +61,7 @@ const StaticSections = () => {
           />
           <div>
             <h3 className="text-xl font-semibold mb-2">Arifun Nahar</h3>
-            <p className="text-gray-700 max-w-lg">
+            <p className="text-gray-800 max-w-lg">
               Spotlight on a trusted host who provides top-quality vehicles and excellent service for travelers.
             </p>
           </div>
@@ -77,7 +77,7 @@ const StaticSections = () => {
         viewport={{ once: true }}
       >
         <h2 className="text-2xl font-bold mb-4 text-blue-800">About TravelEase</h2>
-        <p className="text-gray-700 max-w-2xl">
+        <p className="text-gray-800 max-w-2xl">
           TravelEase connects travelers with reliable car owners across Bangladesh. Whether you want to rent, buy, or explore new destinations, we make the journey simple, safe, and enjoyable.
         </p>
       </motion.section>

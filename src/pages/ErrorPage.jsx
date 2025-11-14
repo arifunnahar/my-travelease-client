@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const ErrorPage = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-blue-50 to-white text-center px-6">
-      {/* Icon */}
+    
       <FaExclamationTriangle className="text-red-500 text-6xl mb-4 animate-bounce" />
 
       

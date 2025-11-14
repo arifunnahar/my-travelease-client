@@ -26,7 +26,7 @@ const AddVehicle = () => {
 
       toast.success("Vehicle added successfully!");
 
-      // Auto reset form after success
+      // Auto reset form 
       form.reset();
     } catch (err) {
       console.log(err);
@@ -38,15 +38,15 @@ const AddVehicle = () => {
   if (error) return <ErrorPage />;
 
   return (
-    <div className="min-h-screen bg-pink-50 p-4 flex items-center justify-center">
+    <div className="min-h-screen  p-4 flex items-center justify-center">
       <ToastContainer />
       <div className="w-full max-w-lg">
-        <h1 className="text-2xl font-bold text-center text-gray-800 mb-4">
+        <h1 className="text-2xl font-bold text-center dark:text-white text-gray-800 mb-4">
           Add New Vehicle
         </h1>
         <form
           onSubmit={handleSubmit}
-          className="bg-white p-5 rounded-lg shadow-sm border border-gray-200 space-y-4"
+          className="bg-gray-100 p-5 rounded-lg shadow-sm border border-gray-200 space-y-4"
         >
           {/* Vehicle Name and Owner */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -117,7 +117,7 @@ const AddVehicle = () => {
             </div>
           </div>
 
-          {/* Location & Availability */}
+          {/* Location -----and Availability ----------*/}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label htmlFor="location" className="text-gray-500 text-[16px]">
@@ -149,7 +149,7 @@ const AddVehicle = () => {
             </div>
           </div>
 
-          {/* Cover Image */}
+          {/* Cover Image -----------------*/}
           <div>
             <label htmlFor="coverImage" className="text-gray-500 text-[16px]">
               Cover Image URL
@@ -163,7 +163,7 @@ const AddVehicle = () => {
             />
           </div>
 
-          {/* Description */}
+      
           <div>
             <label htmlFor="description" className="text-gray-500 text-[16px]">
               Description
@@ -177,7 +177,7 @@ const AddVehicle = () => {
             />
           </div>
 
-          {/* User Email */}
+          {/* User Email -------------*/}
           <div>
             <label htmlFor="userEmail" className="text-gray-500 text-[16px]">
               User Email
@@ -193,7 +193,7 @@ const AddVehicle = () => {
             />
           </div>
 
-          {/* Submit Button */}
+          {/* Submit Button------------- */}
           <button
             type="submit"
             className="w-full py-2 text-sm bg-blue-600 hover:bg-blue-700 text-white font-medium rounded"

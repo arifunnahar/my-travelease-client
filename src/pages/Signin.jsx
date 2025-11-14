@@ -85,7 +85,7 @@ const Signin = () => {
             <h1 className="text-2xl font-bold text-center mb-4">Login</h1>
 
             <form onSubmit={handleSignin}>
-              {/* Email */}
+              {/* Email --------------*/}
               <div className="form-control mb-4 relative">
                 <label className="label text-gray-900 text-[16px]">Email</label>
                 <input
@@ -98,7 +98,7 @@ const Signin = () => {
                 />
               </div>
 
-              {/* Password */}
+              {/* Password--------------- */}
               <div className="form-control mb-2 relative">
                 <label className="label text-gray-900">Password</label>
                 <input
@@ -116,7 +116,7 @@ const Signin = () => {
                 </span>
               </div>
 
-              {/* Forgot Password */}
+              {/* Forgot Password -----------------*/}
               <button
                 type="button"
                
@@ -125,12 +125,12 @@ const Signin = () => {
                 Forgot password?
               </button>
 
-              {/* Login Button */}
+              {/* Login Button ------------*/}
               <button type="submit" className="btn btn-neutral w-full mb-2">
                 Login
               </button>
 
-              {/* Google Login */}
+              {/* Google Login ------------*/}
               <button
                 type="button"
                 onClick={handleGoogleSignin}
@@ -141,7 +141,7 @@ const Signin = () => {
               </button>
             </form>
 
-            {/* Register Link */}
+            {/* Register Link ------------*/}
             <p className="text-center text-sm mt-4">
               Don't have an account?{" "}
               <Link to="/signup" className="text-blue-400 font-medium underline">

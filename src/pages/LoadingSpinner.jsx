@@ -4,19 +4,14 @@ import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-blue-50 to-white text-center px-6">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-blue-400 text-center px-6">
       
     
-      <span className="loading loading-spinner loading-lg text-blue-600 mb-6"></span>
-
-    
-      <FaExclamationTriangle className="text-red-500 text-6xl mb-4 animate-bounce" />
-
-   
-      <h1 className="text-4xl font-bold text-gray-800 mb-2">Oops! Page Not Found</h1>
-      <p className="text-gray-600 mb-6">
-        The page you’re looking for doesn’t exist or has been moved.
-      </p>
+   <span className="loading loading-ball loading-xs"></span>
+<span className="loading loading-ball loading-sm"></span>
+<span className="loading loading-ball loading-md"></span>
+<span className="loading loading-ball loading-lg"></span>
+<span className="loading loading-ball loading-xl"></span>
 
     
       <Link
