@@ -26,7 +26,7 @@ const AddVehicle = () => {
 
       toast.success("Vehicle added successfully!");
 
-      // Auto reset form 
+      // Auto reset form
       form.reset();
     } catch (err) {
       console.log(err);
@@ -163,7 +163,6 @@ const AddVehicle = () => {
             />
           </div>
 
-      
           <div>
             <label htmlFor="description" className="text-gray-500 text-[16px]">
               Description

@@ -46,7 +46,6 @@ const AllVehicles = () => {
   return (
     <section className="w-full p-8 md:p-8 bg-base-100">
       <div className="container mx-auto">
-      
         <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
           <h2 className="text-3xl font-bold text-base-content">All Vehicles</h2>
 
@@ -104,7 +103,9 @@ const AllVehicles = () => {
           </div>
         ) : filteredVehicles.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-64 rounded-lg p-6">
-            <h2 className="text-xl font-semibold mb-2">Oops! No Vehicles Found</h2>
+            <h2 className="text-xl font-semibold mb-2">
+              Oops! No Vehicles Found
+            </h2>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -6,11 +6,11 @@ import LoadingSpinner from "../pages/LoadingSpinner";
 import ErrorPage from "../pages/ErrorPage";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { AuthContext } from "../context/AuthContext"; 
+import { AuthContext } from "../context/AuthContext";
 
 const MyVehicles = () => {
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext); 
+  const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [myProducts, setMyProducts] = useState([]);
@@ -131,7 +131,9 @@ const MyVehicles = () => {
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                     <div className="flex flex-col">
                       <span>{product.ownerName}</span>
-                      <span className="text-xs text-gray-500">{product.userEmail}</span>
+                      <span className="text-xs text-gray-500">
+                        {product.userEmail}
+                      </span>
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm">

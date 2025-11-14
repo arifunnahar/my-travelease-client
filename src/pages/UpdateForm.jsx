@@ -27,7 +27,7 @@ const UpdateForm = () => {
       try {
         console.log("🔍 Fetching product:", id);
         const { data } = await axios.get(
-          `https://my-travel-ease-server.vercel.app/products/${id}`
+          `https://my-travel-ease-server.vercel.app//products/${id}`
         );
         console.log(" Fetched:", data);
 
@@ -67,7 +67,7 @@ const UpdateForm = () => {
 
     try {
       const { data } = await axios.put(
-        `https://my-travel-ease-server.vercel.app/products/${id}`,
+        `https://my-travel-ease-server.vercel.app//products/${id}`,
         dataToUpdate
       );
       console.log(" Updated:", data);
@@ -89,7 +89,6 @@ const UpdateForm = () => {
         Update Form
       </h2>
       <form onSubmit={handleSubmit} className="space-y-6">
-        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label className="block mb-2 font-medium text-gray-700">
@@ -216,7 +215,6 @@ const UpdateForm = () => {
           </div>
         </div>
 
-      
         <div>
           <label className="block mb-2 font-medium text-gray-700">
             Description

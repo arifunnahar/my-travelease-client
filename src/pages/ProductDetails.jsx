@@ -4,13 +4,13 @@ import useProducts from "../hooks/useProducts";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { AuthContext } from "../context/AuthContext"; // adjust path if needed
+import { AuthContext } from "../context/AuthContext"; 
 
 const ProductDetails = () => {
   const { id } = useParams();
   const { products, loading, error } = useProducts();
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext); // logged-in user
+  const { user } = useContext(AuthContext); 
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error loading product</p>;
@@ -37,9 +37,9 @@ const ProductDetails = () => {
     pricePerDay,
     location,
     ownerName,
-    ownerEmail, 
-    userName: user?.name, 
-    userEmail: user?.email, 
+    ownerEmail,
+    userName: user?.name,
+    userEmail: user?.email,
     status: "Pending",
     createdAt: new Date(),
   };
@@ -91,16 +91,21 @@ const ProductDetails = () => {
 
           <div className="mt-6">
             <h3 className="font-semibold text-lg mb-2">Product Description</h3>
-            <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              {description}
+            </p>
             <div className="mt-4 flex flex-wrap gap-6 text-sm">
               <p>
-                <span className="font-medium text-gray-800">Category:</span> {category}
+                <span className="font-medium text-gray-800">Category:</span>{" "}
+                {category}
               </p>
               <p>
-                <span className="font-medium text-gray-800">Condition:</span> Good
+                <span className="font-medium text-gray-800">Condition:</span>{" "}
+                Good
               </p>
               <p>
-                <span className="font-medium text-gray-800">Usage Time:</span> 2 Years
+                <span className="font-medium text-gray-800">Usage Time:</span> 2
+                Years
               </p>
             </div>
           </div>
@@ -109,23 +114,32 @@ const ProductDetails = () => {
         {/* Right side */}
         <div className="flex flex-col justify-between">
           <div>
-            <h1 className="text-2xl font-semibold text-gray-800 mb-3">{vehicleName}</h1>
+            <h1 className="text-2xl font-semibold text-gray-800 mb-3">
+              {vehicleName}
+            </h1>
             <p className="text-2xl font-bold text-pink-600 mb-3">
-              ${pricePerDay} <span className="text-sm text-gray-500">/ day</span>
+              ${pricePerDay}{" "}
+              <span className="text-sm text-gray-500">/ day</span>
             </p>
 
             <div className="border-t pt-3 mt-3">
-              <h3 className="font-semibold text-gray-800 mb-2">Product Details</h3>
+              <h3 className="font-semibold text-gray-800 mb-2">
+                Product Details
+              </h3>
               <p className="text-sm text-gray-600">
-                <span className="font-medium text-gray-700">Availability:</span> {availability}
+                <span className="font-medium text-gray-700">Availability:</span>{" "}
+                {availability}
               </p>
               <p className="text-sm text-gray-600">
-                <span className="font-medium text-gray-700">Location:</span> {location}
+                <span className="font-medium text-gray-700">Location:</span>{" "}
+                {location}
               </p>
             </div>
 
             <div className="border-t pt-3 mt-3">
-              <h3 className="font-semibold text-gray-800 mb-2">Seller Information</h3>
+              <h3 className="font-semibold text-gray-800 mb-2">
+                Seller Information
+              </h3>
               <p className="text-sm text-gray-700">
                 <span className="font-medium">Name:</span> {ownerName}
               </p>

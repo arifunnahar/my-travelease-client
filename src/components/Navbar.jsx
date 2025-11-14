@@ -193,7 +193,7 @@ const navLinks = [
               </Link>
               <Link
                 to="/signup"
-                className="btn btn-primary w-full "
+                className="btn btn-primary w-full rounded-full"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Signup
@@ -201,30 +201,7 @@ const navLinks = [
             </>
           )}
 
-          {user && (
-            <div className="flex flex-col items-center gap-2 mt-2">
-              <img
-                src={user.photoURL || "https://via.placeholder.com/40"}
-                alt={user.displayName || "User"}
-                className="w-12 h-12 rounded-full border-2 border-blue-500"
-              />
-              <h2 className="font-semibold hover:text-purple-600 mb-1">
-                {user.displayName}
-              </h2>
-              <Link
-                onClick={() => setMobileMenuOpen(false)}
-                className="hover:text-purple-600 font-bold hover:underline mb-2 mt-2"
-              >
-               
-              </Link>
-              <button
-                onClick={handleSignOut}
-                className="btn bg-blue-400 hover:bg-blue-500 text-white w-full"
-              >
-                Logout
-              </button>
-            </div>
-          )}
+          
         </div>
       )}
     </nav>
