@@ -27,7 +27,7 @@ const UpdateForm = () => {
       try {
         console.log("🔍 Fetching product:", id);
         const { data } = await axios.get(
-          `https://my-travel-ease-server.vercel.app//products/${id}`
+          `https://my-travel-ease-server.vercel.app/products/${id}`
         );
         console.log(" Fetched:", data);
 
@@ -67,7 +67,7 @@ const UpdateForm = () => {
 
     try {
       const { data } = await axios.put(
-        `https://my-travel-ease-server.vercel.app//products/${id}`,
+        `https://my-travel-ease-server.vercel.app/products/${id}`,
         dataToUpdate
       );
       console.log(" Updated:", data);
