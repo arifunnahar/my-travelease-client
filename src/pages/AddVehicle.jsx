@@ -46,7 +46,7 @@ const AddVehicle = () => {
         </h1>
         <form
           onSubmit={handleSubmit}
-          className="bg-gray-100 p-5 rounded-lg shadow-sm border border-gray-200 space-y-4"
+          className="bg-gray-100 p-5 rounded-lg shadow-sm border  border-gray-200 space-y-4"
         >
           {/* Vehicle Name and Owner */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -62,7 +62,7 @@ const AddVehicle = () => {
                 type="text"
                 name="vehicleName"
                 placeholder="Vehicle Name"
-                className="text-sm px-3 py-2 border border-gray-300 rounded w-full"
+                className="text-sm px-3 py-2 border border-gray-300  dark:text-gray-800 rounded w-full"
               />
             </div>
             <div>
@@ -76,7 +76,7 @@ const AddVehicle = () => {
                 defaultValue={user.displayName}
                 readOnly
                 placeholder="Owner Name"
-                className="text-sm px-3 py-2 border border-gray-300 rounded w-full"
+                className="text-sm px-3 py-2 border dark:text-blue-800 border-gray-300 rounded w-full"
               />
             </div>
           </div>
@@ -90,7 +90,7 @@ const AddVehicle = () => {
               <select
                 id="category"
                 name="category"
-                className="text-sm px-3 py-2 border border-gray-300 rounded w-full"
+                className="text-sm px-3 py-2 border border-gray-300 dark:text-blue-800 rounded w-full"
               >
                 <option value="">Select Category</option>
                 <option value="SUV">SUV</option>
@@ -112,7 +112,7 @@ const AddVehicle = () => {
                 type="number"
                 name="pricePerDay"
                 placeholder="Price per Day"
-                className="text-sm px-3 py-2 border border-gray-300 rounded w-full"
+                className="text-sm px-3 py-2 border dark:text-blue-800 border-gray-300 rounded w-full"
               />
             </div>
           </div>
@@ -128,7 +128,7 @@ const AddVehicle = () => {
                 type="text"
                 name="location"
                 placeholder="Location"
-                className="text-sm px-3 py-2 border border-gray-300 rounded w-full"
+                className="text-sm px-3 py-2 border dark:text-blue-800 border-gray-300 rounded w-full"
               />
             </div>
             <div>
@@ -141,7 +141,7 @@ const AddVehicle = () => {
               <select
                 id="availability"
                 name="availability"
-                className="text-sm px-3 py-2 border border-gray-300 rounded w-full"
+                className="text-sm px-3 py-2 border dark:text-blue-800 border-gray-300 rounded w-full"
               >
                 <option value="Available">Available</option>
                 <option value="Unavailable">Booked</option>
@@ -159,7 +159,7 @@ const AddVehicle = () => {
               type="url"
               name="coverImage"
               placeholder="Cover Image URL"
-              className="w-full text-sm px-3 py-2 border border-gray-300 rounded"
+              className="w-full text-sm px-3 py-2 border dark:text-blue-800 border-gray-300 rounded"
             />
           </div>
 
@@ -172,7 +172,7 @@ const AddVehicle = () => {
               name="description"
               rows={2}
               placeholder="Vehicle description..."
-              className="w-full text-sm px-3 py-2 border border-gray-300 rounded resize-none"
+              className="w-full text-sm px-3 py-2 border dark:text-blue-800 border-gray-300 rounded resize-none"
             />
           </div>
 
@@ -188,7 +188,7 @@ const AddVehicle = () => {
               defaultValue={user.email}
               readOnly
               placeholder="User Email"
-              className="w-full text-sm px-3 py-2 border border-gray-300 rounded"
+              className="w-full text-sm px-3 py-2 border dark:text-blue-800 border-gray-300 rounded"
             />
           </div>
 

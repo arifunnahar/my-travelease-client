@@ -130,7 +130,7 @@ const Signin = () => {
                 Login
               </button>
 
-              {/* Google Login ------------*/}
+              {/* Google Login --*/}
               <button
                 type="button"
                 onClick={handleGoogleSignin}
@@ -141,7 +141,7 @@ const Signin = () => {
               </button>
             </form>
 
-            {/* Register Link ------------*/}
+            {/* Register Link */}
             <p className="text-center text-sm mt-4">
               Don't have an account?{" "}
               <Link to="/signup" className="text-blue-400 font-medium underline">
