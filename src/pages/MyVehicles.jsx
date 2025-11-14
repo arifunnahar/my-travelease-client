@@ -65,8 +65,8 @@ const MyVehicles = () => {
   return (
     <div className="p-6 max-w-7xl mx-auto">
       <ToastContainer />
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">
-        My Products: <span className="text-blue-600">{myProducts.length}</span>
+      <h2 className="text-2xl font-bold dark:text-white text-gray-800 mb-4">
+        My Products: <span className="text-gray-800 dark:text-white">{myProducts.length}</span>
       </h2>
 
       <div className="bg-white rounded-lg shadow overflow-hidden">

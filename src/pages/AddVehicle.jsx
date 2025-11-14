@@ -62,7 +62,7 @@ const AddVehicle = () => {
                 type="text"
                 name="vehicleName"
                 placeholder="Vehicle Name"
-                className="text-sm px-3 py-2 border border-gray-300  dark:text-gray-800 rounded w-full"
+                className="text-sm px-3 py-2 border border-gray-300  dark:text-blue-800 rounded w-full"
               />
             </div>
             <div>
