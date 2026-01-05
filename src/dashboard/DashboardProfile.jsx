@@ -31,24 +31,27 @@ const DashboardProfile = () => {
     try {
       setSaving(true);
 
-      // Prepare data to send
       const updateData = { name, phone };
 
-      // PUT request to update user profile
       const { data } = await axios.put(
-        `https://my-travel-ease-server.vercel.app/users/${encodeURIComponent(user.email)}`,
+         `https://my-travel-ease-server.vercel.app/users/${encodeURIComponent(user.email)}`,
         updateData
       );
 
-      toast.success('Profile updated successfully!');
+      // Update context state
       setUser({
         ...user,
         displayName: data.displayName,
         phone: data.phone,
       });
+
+      toast.success('Profile updated successfully!');
     } catch (err) {
       console.error(err);
-      toast.error('Failed to update profile.');
+      // Safe error message
+      const message =
+        err?.response?.data?.error || err.message || 'Failed to update profile';
+      toast.error(message);
     } finally {
       setSaving(false);
     }
@@ -130,4 +133,3 @@ const DashboardProfile = () => {
 };
 
 export default DashboardProfile;
-
