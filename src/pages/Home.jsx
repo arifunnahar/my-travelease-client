@@ -10,14 +10,14 @@ const Home = () => {
 
     const latestProducts = [...products]
         .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-        .slice(0, 6);
+        .slice(0, 4);
 
     return (
         <div>
-            <div className="py-5">
+            <div className="py-7 mt-5">
                 <h1 className="text-3xl font-bold text-center">Latest Vehicles</h1>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 p-4 md:p-0 lg:p-0 mb-5">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 p-4 md:p-0 lg:p-0 mb-5">
                 {latestProducts.map(product => (
                     <ProductCard key={product._id} product={product} />
                 ))}

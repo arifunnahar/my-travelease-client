@@ -38,29 +38,36 @@ const Navbar = () => {
 
 
 
-  
 
 const navLinks = [
   { to: "/", label: "Home" },
+
+  
+
   { to: "/allVehicles", label: "All Vehicles" },
+  
+  { to: "/explore", label: "Explore" },
+  { to: "/about", label: "About" },
+  { to: "/contact", label: "Contact" },
+
   ...(user
     ? [
         { to: "/addVehicles", label: "Add Vehicles" },
         { to: "/myVehicles", label: "My Vehicles" },
         { to: "/myBooking", label: "My Bookings" },
+        { to: "/dashboard", label: "Dashboard" },
       ]
     : []),
 ];
 
 
-
   
 
   return (
-    <nav className="bg-blue-100 dark:text-blue-600 shadow-sm p-4 relative">
+    <nav className=" dark:bg-gray-900 dark:text-white shadow-sm p-4 relative">
       <div className="flex items-center justify-between max-w-6xl mx-auto">
         
-        <Link to="/" className="text-2xl font-bold text-blue-800">
+        <Link to="/" className="text-2xl font-bold text-gray-800 dark:text-blue-300 ">
           TravelEase
         </Link>
 
@@ -96,13 +103,13 @@ const navLinks = [
             <>
               <Link
                 to="/signin"
-                className="btn bg-pink-300 hover:bg-pink-400 btn-outline px-3 py-1 hidden md:inline"
+                className="btn bg-blue-400 hover:bg-blue-500 text-white btn-outline px-4 py-1 hidden md:inline rounded-lg"
               >
                 Login
               </Link>
               <Link
                 to="/signup"
-                className="btn bg-blue-500 text-white hover:bg-blue-600 px-3 py-1 hidden md:inline"
+                className="btn bg-blue-500 text-white hover:bg-blue-600 px-3 py-1  hidden md:inline rounded-lg"
               >
                 Signup
               </Link>
@@ -147,7 +154,7 @@ const navLinks = [
                   </div>
                   <button
                     onClick={handleSignOut}
-                    className="btn bg-blue-400 hover:bg-blue-500 text-white w-full rounded-full"
+                    className="btn bg-blue-400 hover:bg-blue-500 text-white w-full rounded-lg"
                   >
                     Logout
                   </button>
@@ -193,7 +200,7 @@ const navLinks = [
               </Link>
               <Link
                 to="/signup"
-                className="btn btn-primary w-full rounded-full"
+                className="btn btn-primary w-full rounded-lg"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Signup

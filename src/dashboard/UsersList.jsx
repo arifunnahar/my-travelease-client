@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Spinner = () => {
+const UsersList = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const Spinner = () => {
     );
 };
 
-export default Spinner;
+export default UsersList;

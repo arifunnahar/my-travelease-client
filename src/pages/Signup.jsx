@@ -4,28 +4,29 @@ import { toast } from "react-toastify";
 import { FaEye } from "react-icons/fa";
 import { IoEyeOff } from "react-icons/io5";
 import { AuthContext } from "../context/AuthContext";
+import axios from "axios";
 
 const Signup = () => {
   const [show, setShow] = useState(false);
   const {
     createUserWithEmailAndPasswordFunc,
     updateProfileFunc,
-  
     setUser,
     setLoading,
   } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
     const displayName = e.target.name?.value;
     const photoURL = e.target.photo?.value;
     const email = e.target.email?.value;
     const password = e.target.password?.value;
 
-    // password validation------------
-    const regExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{8,}$/;
+    // Password validation
+    const regExp =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{8,}$/;
     if (!regExp.test(password)) {
       toast.error(
         "Password must be at least 8 characters, include uppercase, lowercase, number, and special character."
@@ -35,28 +36,37 @@ const Signup = () => {
 
     setLoading(true);
 
-    createUserWithEmailAndPasswordFunc(email, password)
-      .then((res) => {
-      
-        return updateProfileFunc(displayName, photoURL).then(() => {
-    
-          setUser({
-            ...res.user,
-            displayName,
-            photoURL,
-          });
+    try {
+      // Create Firebase user
+      const res = await createUserWithEmailAndPasswordFunc(email, password);
 
-          
-      
+      //  Update Firebase profile
+      await updateProfileFunc(displayName, photoURL);
 
-          toast.success("Signup successful! Welcome to TravelEase");
+      // Save user to MongoDB
+      const userObj = {
+        name: displayName,
+        email,
+        photoURL: photoURL || "",
+        role: "user", 
+      };
 
-       
-          navigate("/");
-        });
-      })
-      .catch((e) => toast.error(e.message))
-      .finally(() => setLoading(false));
+      await axios.post(
+        "https://my-travel-ease-server.vercel.app/users",
+        userObj
+      );
+
+      //  Update context
+      setUser({ ...res.user, displayName, photoURL });
+
+      toast.success("Signup successful! Welcome to TravelEase");
+      navigate("/");
+    } catch (err) {
+      console.error(err);
+      toast.error(err.message || "Signup failed");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -76,6 +86,7 @@ const Signup = () => {
                   placeholder="Name"
                   required
                 />
+
                 {/* Photo */}
                 <label className="label text-gray-900">Photo URL</label>
                 <input
@@ -84,6 +95,7 @@ const Signup = () => {
                   className="input placeholder-gray-400"
                   placeholder="Your photo URL here"
                 />
+
                 {/* Email & Password */}
                 <div className="relative">
                   <label className="label text-gray-900">Email</label>
@@ -94,6 +106,7 @@ const Signup = () => {
                     placeholder="Email"
                     required
                   />
+
                   <label className="label text-gray-900">Password</label>
                   <input
                     type={show ? "text" : "password"}
@@ -102,6 +115,7 @@ const Signup = () => {
                     placeholder="Password"
                     required
                   />
+
                   <span
                     onClick={() => setShow(!show)}
                     className="absolute right-[25px] top-[90px] text-gray-400 cursor-pointer z-50"

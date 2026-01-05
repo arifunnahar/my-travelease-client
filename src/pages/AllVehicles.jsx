@@ -9,6 +9,11 @@ const AllVehicles = () => {
   const [priceSort, setPriceSort] = useState("newest");
   const [locationSort, setLocationSort] = useState("all");
   const [categorySort, setCategorySort] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
 
   useEffect(() => {
     setLoading(true);
@@ -30,6 +35,7 @@ const AllVehicles = () => {
   const category = [...new Set(vehicles.map((cat) => cat.category))];
   const location = [...new Set(vehicles.map((loc) => loc.location))];
 
+  // Filter + Search + Sort
   const filteredVehicles = vehicles
     .filter((vehicle) =>
       locationSort === "all" ? true : vehicle.location === locationSort
@@ -37,11 +43,24 @@ const AllVehicles = () => {
     .filter((vehicle) =>
       categorySort === "all" ? true : vehicle.category === categorySort
     )
+   
+
+    .filter((vehicle) =>
+  (vehicle.vehicleName || "").toLowerCase().includes(searchQuery.toLowerCase())
+)
+
     .sort((a, b) => {
       if (priceSort === "low-high") return a.pricePerDay - b.pricePerDay;
       if (priceSort === "high-low") return b.pricePerDay - a.pricePerDay;
       return 0;
     });
+
+  // Pagination logic
+  const totalPages = Math.ceil(filteredVehicles.length / itemsPerPage);
+  const paginatedVehicles = filteredVehicles.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
   return (
     <section className="w-full p-8 md:p-8 bg-base-100">
@@ -50,7 +69,19 @@ const AllVehicles = () => {
           <h2 className="text-3xl font-bold text-base-content">All Vehicles</h2>
 
           <div className="flex flex-wrap justify-center md:justify-end gap-2">
-            {/* Category Filter -------------*/}
+            {/* Search Bar */}
+            <input
+              type="text"
+              placeholder="Search Vehicles..."
+              value={searchQuery}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setCurrentPage(1); 
+              }}
+              className="input input-bordered w-full sm:w-auto bg-blue-50 text-gray-900 focus:outline-none"
+            />
+
+            {/* Category Filter */}
             <select
               value={categorySort}
               onChange={(e) => setCategorySort(e.target.value)}
@@ -64,7 +95,7 @@ const AllVehicles = () => {
               ))}
             </select>
 
-            {/* Price Filter------------ */}
+            {/* Price Filter */}
             <select
               value={priceSort}
               onChange={(e) => setPriceSort(e.target.value)}
@@ -75,7 +106,7 @@ const AllVehicles = () => {
               <option value="high-low">High to Low</option>
             </select>
 
-            {/* Location Filter----------- */}
+            {/* Location Filter */}
             <select
               value={locationSort}
               onChange={(e) => setLocationSort(e.target.value)}
@@ -101,18 +132,53 @@ const AllVehicles = () => {
               </p>
             </div>
           </div>
-        ) : filteredVehicles.length === 0 ? (
+        ) : paginatedVehicles.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-64 rounded-lg p-6">
             <h2 className="text-xl font-semibold mb-2">
               Oops! No Vehicles Found
             </h2>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredVehicles.map((vehicle) => (
-              <ProductCard key={vehicle._id} product={vehicle} />
-            ))}
-          </div>
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2">
+              {paginatedVehicles.map((vehicle) => (
+                <ProductCard key={vehicle._id} product={vehicle} />
+              ))}
+            </div>
+
+            {/* Pagination Controls */}
+            <div className="flex justify-center items-center mt-6 gap-2">
+              <button
+                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                disabled={currentPage === 1}
+                className="btn btn-sm"
+              >
+                Prev
+              </button>
+
+              {Array.from({ length: totalPages }, (_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentPage(i + 1)}
+                  className={`btn btn-sm ${
+                    currentPage === i + 1 ? "btn-active" : ""
+                  }`}
+                >
+                  {i + 1}
+                </button>
+              ))}
+
+              <button
+                onClick={() =>
+                  setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                }
+                disabled={currentPage === totalPages}
+                className="btn btn-sm"
+              >
+                Next
+              </button>
+            </div>
+          </>
         )}
       </div>
     </section>
